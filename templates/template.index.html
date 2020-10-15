@@ -1,0 +1,266 @@
+{% from "macros.html" import nav_link with context %}
+<!doctype html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<title>Cryptominer</title>
+		<meta name="robots" content="noindex, nofollow">
+		<meta name="author" content="@acrohacking">
+	  <meta name="author" content="Alejandro .R">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		<!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	  <!-- Bootstrap core CSS -->
+	  <link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	  <link href="/static/bootstrap/fonts/fonts.css" rel="stylesheet">
+	  <link href="/static/jumbotron/style.css" rel="stylesheet">
+	  <link href="/static/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
+
+		<style>
+		#result {
+			background-image: url("{{ url_for('static', filename='img/blockchaininfologo.png') }}");
+		}
+		</style>
+
+</head>
+<body>
+  <div class="container">
+		<div class="container-fluid">
+      <div class="row">
+			  <div class="col-lg-3"></div>
+         <div class="col-lg-6">
+         <h2 align="center">Cryptocurrency converter calculator</h2>
+         </div>
+			<div class="col-lg-3"></div>
+    </div>
+
+		<!-- Cryptomonedas -->
+    <div class="row">
+
+			<!-- Bitcoin -->
+    <div class="col-sm-3 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3 align="center">Bitcoin</h3>
+          <form class="form-inline">
+            <div class="form-group">
+              <img src="{{ url_for('static', filename='img/Bitcoin.png') }}">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="Bitcoin" placeholder="Bitcoin">
+            </div>
+            <div class="form-group">
+              <a href={{ url_for('Bitcoin') }} type="button" class="btn btn-default">Bitcoin</a>
+            </div>
+            <!--{% for i in btc %}
+              <h3>{{ i }}</h3>
+            {% endfor %}-->
+          </form>
+        </div>
+      </div>
+    </div>
+		<!--/bitcoin-->
+
+		<!-- Ethereum -->
+    <div class="col-sm-3 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3 align="center">Ethereum</h3>
+          <form class="form-inline">
+            <div class="form-group">
+              <img src="{{ url_for('static', filename='img/Eth.png') }}">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="Ethe" placeholder="Ethe">
+            </div>
+            <div class="form-group">
+              <a href={{ url_for('Ethereum') }} type="button" class="btn btn-default">Ethe</a>
+            </div>
+            <!-- {% if eth %}
+            <h3>Last price: {{ eth }}</h3>
+            {% endif %} -->
+          </form>
+        </div>
+      </div>
+    </div>
+		<!-- /Ethereum -->
+
+		<!-- Dash -->
+    <div class="col-sm-3 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3 align="center">Dash</h3>
+          <form class="form-inline">
+            <div class="form-group">
+              <img src="{{ url_for('static', filename='img/Dash.png') }}">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="Dash" placeholder="Dash">
+            </div>
+            <div class="form-group">
+              <a href={{ url_for('Dash') }} type="button" class="btn btn-default">Dash</a>
+            </div>
+            <!--{% if dash %}
+            <h3>Last price: {{ dash }} $</h3>
+            {% endif %}-->
+          </form>
+         </div>
+       </div>
+     </div>
+     <!-- /Dash -->
+
+		 <!-- Zcash -->
+     <div class="col-sm-3 col-md-4">
+      <div class="thumbnail">
+        <div class="caption">
+          <h3 align="center">Zcash</h3>
+          <form class="form-inline">
+            <div class="form-group">
+              <img src="{{ url_for('static', filename='img/Zcash.png') }}">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" id="Zcash" placeholder="Zcash">
+            </div>
+            <div class="form-group">
+              <a href={{ url_for('zcash') }} type="button" class="btn btn-default">Zcash</a>
+            </div>
+            <!--{% if zec %}
+            <h3>Last price: {{ zec }} $</h3>
+            {% endif %}-->
+          </form>
+          </div>
+        </div>
+      </div>
+      <!-- /Zcash -->
+
+			<!-- monero -->
+			<div class="col-sm-3 col-md-4">
+			 <div class="thumbnail">
+				 <div class="caption">
+					 <h3 align="center">Monero</h3>
+					 <form class="form-inline">
+						 <div class="form-group">
+							 <img src="{{ url_for('static', filename='img/monero.png') }}">
+						 </div>
+						 <div class="form-group">
+							 <input type="text" class="form-control" id="monero" placeholder="monero">
+						 </div>
+						 <div class="form-group">
+							 <a href={{ url_for('monero') }} type="button" class="btn btn-default">Xmr</a>
+						 </div>
+						 <!--{% if xmr %}
+						 <h3>Last price: {{ xmr }} $</h3>
+						 {% endif %}-->
+					 </form>
+					 </div>
+				 </div>
+			 </div>
+			 <!-- /monero -->
+
+			 <!-- litecoin -->
+			 <div class="col-sm-3 col-md-4">
+				<div class="thumbnail">
+					<div class="caption">
+						<h3 align="center">Litecoin</h3>
+						<form class="form-inline">
+							<div class="form-group">
+								<img src="{{ url_for('static', filename='img/Litecoin.png') }}">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="litecoin" placeholder="litecoin">
+							</div>
+							<div class="form-group">
+								<a href={{ url_for('litecoin') }} type="button" class="btn btn-default">Ltc</a>
+							</div>
+							<!--{% if ltc %}
+							<h3>Last price: {{ ltc }} $</h3>
+							{% endif %}-->
+						</form>
+						</div>
+					</div>
+				</div>
+				<!-- /litecoin -->
+
+	<!-- Result Cryptomonedas -->
+  </div>
+  <div class="row">
+		<div class="col-sm-3 col-md-4"></div>
+		  <div class="col-sm-3 col-md-4">
+				<div class="thumbnail">
+					<div class="caption">
+						<h3 align="center">Result coin</h3>
+						<!-- /Bitcoin -->
+						{% if name_btc %}
+						<h4 align="center">{{ name_btc }}</h4>
+						{% endif %}
+						{% if btc %}
+						<h3 style="color: green;" align="center">Last price: {{ btc }} $</h3>
+						{% endif %}
+						<!-- /Bitcoin -->
+
+						<!-- Ethereum -->
+						{% if name_eth %}
+						<h4 align="center">{{ name_eth }}</h4>
+						{% endif %}
+						{% if eth %}
+						<h3 style="color: green;" align="center">Last price: {{ eth }} $</h3>
+						{% endif %}
+						<!-- /Ethereum -->
+
+						<!-- Dash -->
+						{% if name_dash %}
+						<h4 align="center">{{ name_dash }}</h4>
+						{% endif %}
+						{% if dash %}
+						<h3 style="color: green;" align="center">Last price: {{ dash }} $</h3>
+						{% endif %}
+						<!-- /Dash -->
+
+						<!-- Zcash -->
+						{% if name_zec %}
+						<h4 align="center">{{ name_zec }}</h4>
+						{% endif %}
+						{% if zec %}
+						<h3 style="color: green;" align="center">Last price: {{ zec }} $</h3>
+						{% endif %}
+						<!-- /Zcash -->
+
+						<!-- Monero -->
+						{% if name_xmr %}
+						<h4 align="center">{{ name_xmr }}</h4>
+						{% endif %}
+						{% if xmr %}
+						<h3 style="color: green;" align="center">Last price: {{ xmr }} $</h3>
+						{% endif %}
+						<!-- /Monero -->
+
+						<!-- Litecoin -->
+						{% if name_ltc %}
+						<h4 align="center">{{ name_ltc }}</h4>
+						{% endif %}
+						{% if ltc %}
+						<h3 style="color: green;" align="center">Last price: {{ ltc }} $</h3>
+						{% endif %}
+						<!-- /Litecoin -->
+
+					</div>
+				</div>
+		  </div>
+		<div class="col-sm-3 col-md-4"></div>
+  </div>
+	</div>
+  </div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- jQuery -->
+  <script src="/static/jquery/jquery.min.js"></script>
+  <!-- Bootstrap Core JavaScript -->
+  <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+  <script src="/static/jasny-bootstrap/js/jasny-bootstrap.min.js"></script>
+
+</body>
+</html>
