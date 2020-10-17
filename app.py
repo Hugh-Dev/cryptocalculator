@@ -1,8 +1,14 @@
 # -*- coding:utf-8 -*-
+
+"""
+▌ ▌      ▌        ▐  ▌
+▙▄▌▌ ▌▞▀▌▛▀▖▛▀▖▌ ▌▜▀ ▛▀▖▞▀▖▛▀▖▞▀▖▞▀▖▙▀▖
+▌ ▌▌ ▌▚▄▌▌ ▌▙▄▘▚▄▌▐ ▖▌ ▌▌ ▌▌ ▌▛▀ ▛▀ ▌
+▘ ▘▝▀▘▗▄▘▘ ▘▌  ▗▄▘ ▀ ▘ ▘▝▀ ▘ ▘▝▀▘▝▀▘▘   2017"""
+
 from flask import Flask, request, render_template, url_for
 from bs4 import BeautifulSoup
 import requests
-
 
 """
 Hughpythoneer
@@ -29,19 +35,24 @@ def index():
 # bitcoin coinzoeken
 @app.route("/Bitcoin", methods=['GET', 'POST'])
 def Bitcoin():
-    url = "www.worldcoinindex.com"
-    r  = requests.get("https://" +url)
-    data = r.text
-    soup = BeautifulSoup(data, 'html.parser')
-    class_btc_all = soup.find_all("tr", class_="bitcoin coinzoeken")
-    for i, class_btc in enumerate(class_btc_all):
-        value_btc = class_btc.find('span', {'class': 'span'}).getText()
-        name_btc = class_btc.get('data-naam')
-
     if request.method == 'POST':
         btc = request.form['Bitcoin']
-
-    return render_template('template.index.html', btc =  value_btc, name_btc = name_btc)
+        url = "www.worldcoinindex.com"
+        r  = requests.get("https://" +url)
+        data = r.text
+        soup = BeautifulSoup(data, 'html.parser')
+        class_btc_all = soup.find_all("tr", class_="bitcoin coinzoeken")
+        for i, class_btc in enumerate(class_btc_all):
+            value_btc = class_btc.find('span', {'class': 'span'}).getText()
+            name_btc = class_btc.get('data-naam')
+        search = ','
+        replace = '.'
+        f = value_btc.replace(search, replace)
+        n = f.encode('utf-8')
+        ibtc = float(btc)
+        fbtc = float(n)
+        coinresult = fbtc * ibtc
+        return render_template('template.index.html', btc =  coinresult, name_btc = name_btc)
 
 # ethereum coinzoeken
 @app.route("/Ethereum")
@@ -109,4 +120,4 @@ def litecoin():
     return render_template('template.index.html', ltc =  value_ltc, name_ltc = name_ltc)
 
 if __name__ == "__main__":
-    app.run(port=8000, debug = True)
+    app.run(port=5000, debug = True)
