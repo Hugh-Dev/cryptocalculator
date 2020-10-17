@@ -55,47 +55,75 @@ def Bitcoin():
         return render_template('template.index.html', btc =  coinresult, name_btc = name_btc)
 
 # ethereum coinzoeken
-@app.route("/Ethereum")
+@app.route("/Ethereum", methods=['GET', 'POST'])
 def Ethereum():
-    url = "www.worldcoinindex.com"
-    r  = requests.get("https://" +url)
-    data = r.text
-    soup = BeautifulSoup(data, 'html.parser')
-    class_eth_all = soup.find_all("tr", class_="ethereum coinzoeken")
-    for i, class_eth in enumerate(class_eth_all):
-        value_eth = class_eth.find('span', {'class': 'span'}).getText()
-        name_eth = class_eth.get('data-naam')
-    return render_template('template.index.html', eth =  value_eth, name_eth = name_eth)
+    if request.method == 'POST':
+        eth = request.form['Ethereum']
+        url = "www.worldcoinindex.com"
+        r  = requests.get("https://" +url)
+        data = r.text
+        soup = BeautifulSoup(data, 'html.parser')
+        class_eth_all = soup.find_all("tr", class_="ethereum coinzoeken")
+        for i, class_eth in enumerate(class_eth_all):
+            value_eth = class_eth.find('span', {'class': 'span'}).getText()
+            name_eth = class_eth.get('data-naam')
+        search = ','
+        replace = '.'
+        f = value_eth.replace(search, replace)
+        n = f.encode('utf-8')
+        ieth = float(eth)
+        feth = float(n)
+        coinresult = feth * ieth
+        return render_template('template.index.html', eth =  coinresult, name_eth = name_eth)
 
 # dash coinzoeken
-@app.route("/Dash")
+@app.route("/Dash", methods=['GET', 'POST'])
 def Dash():
-    url = "www.worldcoinindex.com"
-    r  = requests.get("https://" +url)
-    data = r.text
-    soup = BeautifulSoup(data, 'html.parser')
-    class_dash_all = soup.find_all("tr", class_="dash coinzoeken")
-    for i, class_dash in enumerate(class_dash_all):
-        value_dash = class_dash.find('span', {'class': 'span'}).getText()
-        name_dash = class_dash.get('data-naam')
-    return render_template('template.index.html', dash =  value_dash, name_dash = name_dash )
+    if request.method == 'POST':
+        dash = request.form['Dash']
+        url = "www.worldcoinindex.com"
+        r  = requests.get("https://" +url)
+        data = r.text
+        soup = BeautifulSoup(data, 'html.parser')
+        class_dash_all = soup.find_all("tr", class_="dash coinzoeken")
+        for i, class_dash in enumerate(class_dash_all):
+            value_dash = class_dash.find('span', {'class': 'span'}).getText()
+            name_dash = class_dash.get('data-naam')
+        search = ','
+        replace = '.'
+        f = value_dash.replace(search, replace)
+        n = f.encode('utf-8')
+        idash = float(dash)
+        fdash = float(n)
+        coinresult = fdash * idash
+        return render_template('template.index.html', dash =  coinresult, name_dash = name_dash )
 
 # zcash coinzoeken
-@app.route("/zcash")
+@app.route("/zcash", methods=['GET', 'POST'])
 def zcash():
-    url = "www.worldcoinindex.com"
-    r  = requests.get("https://" +url)
-    data = r.text
-    soup = BeautifulSoup(data, 'html.parser')
-    class_zec_all = soup.find_all("tr", class_="zcash coinzoeken")
-    for i, class_zec in enumerate(class_zec_all):
-        value_zec = class_zec.find('span', {'class': 'span'}).getText()
-        name_zec = class_zec.get('data-naam')
-    return render_template('template.index.html', zec =  value_zec, name_zec = name_zec)
+    if request.method == 'POST':
+        zcash = request.form['Zcash']
+        url = "www.worldcoinindex.com"
+        r  = requests.get("https://" +url)
+        data = r.text
+        soup = BeautifulSoup(data, 'html.parser')
+        class_zec_all = soup.find_all("tr", class_="zcash coinzoeken")
+        for i, class_zec in enumerate(class_zec_all):
+            value_zec = class_zec.find('span', {'class': 'span'}).getText()
+            name_zec = class_zec.get('data-naam')
+        search = ','
+        replace = '.'
+        f = value_zec.replace(search, replace)
+        n = f.encode('utf-8')
+        izcash = float(zcash)
+        fzcash = float(n)
+        coinresult = fzcash * izcash
+        return render_template('template.index.html', zec = coinresult, name_zec = name_zec)
 
 # monero coinzoeken
-@app.route("/monero")
+@app.route("/monero", methods=['POST'])
 def monero():
+    monero = request.form['monero']
     url = "www.worldcoinindex.com"
     r  = requests.get("https://" +url)
     data = r.text
@@ -104,11 +132,19 @@ def monero():
     for i, class_xmr in enumerate(class_xmr_all):
         value_xmr = class_xmr.find('span', {'class': 'span'}).getText()
         name_xmr = class_xmr.get('data-naam')
-    return render_template('template.index.html', xmr =  value_xmr, name_xmr = name_xmr)
+    search = ','
+    replace = '.'
+    f = value_xmr.replace(search, replace)
+    n = f.encode('utf-8')
+    imonero = float(monero)
+    fmonero = float(n)
+    coinresult = fmonero * imonero
+    return render_template('template.index.html', xmr =  coinresult, name_xmr = name_xmr)
 
 #litecoin coinzoeken
-@app.route("/litecoin")
+@app.route("/litecoin", methods=['POST'])
 def litecoin():
+    litecoin = request.form['litecoin']
     url = "www.worldcoinindex.com"
     r  = requests.get("https://" +url)
     data = r.text
@@ -117,7 +153,14 @@ def litecoin():
     for i, class_ltc in enumerate(class_ltc_all):
         value_ltc = class_ltc.find('span', {'class': 'span'}).getText()
         name_ltc = class_ltc.get('data-naam')
-    return render_template('template.index.html', ltc =  value_ltc, name_ltc = name_ltc)
+    search = ','
+    replace = '.'
+    f = value_ltc.replace(search, replace)
+    n = f.encode('utf-8')
+    ilitecoin = float(litecoin)
+    flitecoin = float(n)
+    coinresult = flitecoin * ilitecoin
+    return render_template('template.index.html', ltc =  coinresult, name_ltc = name_ltc)
 
 if __name__ == "__main__":
     app.run(port=5000, debug = True)

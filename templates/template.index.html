@@ -3,10 +3,10 @@
 <html>
 <head>
 		<meta charset="UTF-8">
-		<title>Cryptominer</title>
+		<title>cryptocalculator</title>
 		<meta name="robots" content="noindex, nofollow">
-		<meta name="author" content="@acrohacking">
-	  <meta name="author" content="Alejandro .R">
+		<meta name="author" content="@hughpythoneer">
+	  <meta name="author" content="Hugo Ramírez">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 		<!-- Meta, title, CSS, favicons, etc. -->
@@ -20,12 +20,6 @@
 	  <link href="/static/jumbotron/style.css" rel="stylesheet">
 	  <link href="/static/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
 
-		<style>
-		#result {
-			background-image: url("{{ url_for('static', filename='img/blockchaininfologo.png') }}");
-		}
-		</style>
-
 </head>
 <body>
   <div class="container">
@@ -34,6 +28,7 @@
 			  <div class="col-lg-3"></div>
          <div class="col-lg-6">
          <h1 class="text-muted text-center">Cryptocurrency</h1>
+				 <br><br>
          </div>
 			<div class="col-lg-3"></div>
     </div>
@@ -51,7 +46,7 @@
               <img src="{{ url_for('static', filename='img/Bitcoin.png') }}">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" name="Bitcoin" id="Bitcoin" placeholder="Bitcoin">
+              <input type="text" class="form-control" name="Bitcoin" id="Bitcoin" placeholder="Bitcoin" required>
             </div>
             <div class="form-group">
 							<input class="btn btn-default" type="submit" name="Bitcoin" value="Bitcoin">
@@ -67,15 +62,15 @@
       <div class="thumbnail">
         <div class="caption">
           <h3 align="center">Ethereum</h3>
-          <form class="form-inline">
+          <form class="form-inline" method="POST" action={{ url_for('Ethereum') }}>
             <div class="form-group">
               <img src="{{ url_for('static', filename='img/Eth.png') }}">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="Ethe" placeholder="Ethe">
+              <input type="text" class="form-control" name="Ethereum" id="Ethereum" placeholder="Ethe" required>
             </div>
             <div class="form-group">
-              <a href={{ url_for('Ethereum') }} type="button" class="btn btn-default">Ethe</a>
+							<input class="btn btn-default" type="submit" name="Ethereum" value="Ethe">
             </div>
           </form>
         </div>
@@ -88,15 +83,15 @@
       <div class="thumbnail">
         <div class="caption">
           <h3 align="center">Dash</h3>
-          <form class="form-inline">
+          <form class="form-inline" method="POST" action={{ url_for('Dash') }}>
             <div class="form-group">
               <img src="{{ url_for('static', filename='img/Dash.png') }}">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="Dash" placeholder="Dash">
+              <input type="text" class="form-control" name="Dash" id="Dash" placeholder="Dash" required>
             </div>
             <div class="form-group">
-              <a href={{ url_for('Dash') }} type="button" class="btn btn-default">Dash</a>
+              <input class="btn btn-default" type="submit" name="Dash" value="Dash">
             </div>
           </form>
          </div>
@@ -109,15 +104,15 @@
       <div class="thumbnail">
         <div class="caption">
           <h3 align="center">Zcash</h3>
-          <form class="form-inline">
+          <form class="form-inline" method="POST" action={{ url_for('zcash') }}>
             <div class="form-group">
               <img src="{{ url_for('static', filename='img/Zcash.png') }}">
             </div>
             <div class="form-group">
-              <input type="text" class="form-control" id="Zcash" placeholder="Zcash">
+              <input type="text" class="form-control" name="Zcash" id="Zcash" placeholder="Zcash" required>
             </div>
             <div class="form-group">
-              <a href={{ url_for('zcash') }} type="button" class="btn btn-default">Zcash</a>
+              <input class="btn btn-default" type="submit" name="Zcash" value="Zcash">
             </div>
           </form>
           </div>
@@ -130,15 +125,15 @@
 			 <div class="thumbnail">
 				 <div class="caption">
 					 <h3 align="center">Monero</h3>
-					 <form class="form-inline">
+					 <form class="form-inline" method="POST" action={{ url_for('monero') }}>
 						 <div class="form-group">
 							 <img src="{{ url_for('static', filename='img/monero.png') }}">
 						 </div>
 						 <div class="form-group">
-							 <input type="text" class="form-control" id="monero" placeholder="monero">
+							 <input type="text" class="form-control" name="monero" id="monero" placeholder="monero" required>
 						 </div>
 						 <div class="form-group">
-							 <a href={{ url_for('monero') }} type="button" class="btn btn-default">Xmr</a>
+							 <input class="btn btn-default" type="submit" name="Xmr" value="Xmr">
 						 </div>
 					 </form>
 					 </div>
@@ -151,15 +146,15 @@
 				<div class="thumbnail">
 					<div class="caption">
 						<h3 align="center">Litecoin</h3>
-						<form class="form-inline">
+						<form class="form-inline" method="POST" action={{ url_for('litecoin') }}>
 							<div class="form-group">
 								<img src="{{ url_for('static', filename='img/Litecoin.png') }}">
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" id="litecoin" placeholder="litecoin">
+								<input type="text" class="form-control" name="litecoin" id="litecoin" placeholder="litecoin" required>
 							</div>
 							<div class="form-group">
-								<a href={{ url_for('litecoin') }} type="button" class="btn btn-default">Ltc</a>
+								<input class="btn btn-default" type="submit" name="Ltc" value="Ltc">
 							</div>
 						</form>
 						</div>
@@ -186,7 +181,7 @@
 
 						<!-- Ethereum -->
 						{% if name_eth %}
-						<h4 class="text-success text-center">{{ name_eth }}</h4>
+						<h4 class="text-success text-center">Last price: {{ name_eth }}</h4>
 						{% endif %}
 						{% if eth %}
 						<h3 class="text-success text-center">Last price: {{ eth }} $</h3>
