@@ -23,10 +23,6 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    try:
-        import requests
-    except:
-        sys.exit()
     if request.method == 'GET':
         return render_template('template.index.html')
     else:
